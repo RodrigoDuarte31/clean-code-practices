@@ -4,46 +4,38 @@
 #define LIN 2
 #define COL 2
 
-void calcMatriz(int mat[LIN][COL], int ref){
-
-    int i, j, soma = 0;
-
-    switch(ref){
-        case 1:
-            for(i = 0; i < LIN; i++){
-                for(j = 0; j < COL; j++){
-                    soma += mat[i][j];
-                }
-            }
-            printf("Soma de todos os elementos da matriz: %d", soma);
-        break;
-
-        case 2:
-            for(i = 0; i < LIN; i++){
-                for(j = 0; j < COL; j++){
-                    if(i == j){
-                        soma += mat[i][j];
-                    }
-                }
-            }
-            printf("Soma dos elementos da diagonal principal: %d", soma);
-        break;
-
-        case 3:
-            for(i = 0; i < LIN; i++){
-                for(j = 0; j < COL; j++){
-                    if(i + j == LIN - 1){
-                        soma += mat[i][j];
-                    }
-                }
-            }
-            printf("Soma de todos os elementos da diagonal secundaria: %d", soma);
-        break;
-
-        default:
-            printf("Valor de referencia invalido");
+void somaMatriz(int mat[LIN][COL]) {
+    int soma = 0;
+    for(int i = 0; i < LIN; i++){
+        for(int j = 0; j < COL; j++){
+            soma += mat[i][j];
+        }
     }
+    printf("Soma de todos os elementos da matriz: %d", soma);
+}
 
+void somaDiagonalPrincipal(int mat[LIN][COL]) {
+    int soma = 0;
+    for(int i = 0; i < LIN; i++){
+        for(int j = 0; j < COL; j++){
+            if(i == j){
+                soma += mat[i][j];
+            }
+        }
+    }
+    printf("Soma dos elementos da diagonal principal: %d", soma);
+}
+
+void somaDiagonalSecundaria(int mat[LIN][COL]) {
+    int soma = 0;
+    for(int i = 0; i < LIN; i++){
+        for(int j = 0; j < COL; j++){
+            if(i + j == LIN - 1){
+                soma += mat[i][j];
+            }
+        }
+    }
+    printf("Soma de todos os elementos da diagonal secundaria: %d", soma);
 }
 
 int main(){
@@ -65,7 +57,19 @@ int main(){
     printf("\n3 - Soma dos elementos da diagonal secundaria\n");
     scanf("%d", &ref);
 
-    calcMatriz(mat, ref);
+    switch(ref) {
+        case 1:
+            somaMatriz(mat);
+            break;
+        case 2:
+            somaDiagonalPrincipal(mat);
+            break;
+        case 3:
+            somaDiagonalSecundaria(mat);
+            break;
+        default:
+            printf("Entrada invalida");
+    }
 
     return 0;
 
