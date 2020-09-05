@@ -42,12 +42,12 @@ int main(){
 
     setlocale(LC_ALL, "Portuguese");
 
-    int mat[LIN][COL], ref;
+    int matriz[LIN][COL], operacao;
 
     for(int i = 0; i < LIN; i++){
         for(int j = 0; j < COL; j++){
             printf("Informe o elemento %dx%d da matriz: ", i, j);
-            scanf("%d", &mat[i][j]);
+            scanf("%d", &matriz[i][j]);
         }
     }
 
@@ -55,17 +55,17 @@ int main(){
     printf("\n1 - Soma dos elementos da matriz");
     printf("\n2 - Soma dos elementos da diagonal principal");
     printf("\n3 - Soma dos elementos da diagonal secundaria\n");
-    scanf("%d", &ref);
+    scanf("%d", &operacao);
 
-    switch(ref) {
+    switch(operacao) {
         case 1:
-            somaMatriz(mat);
+            somaMatriz(matriz);
             break;
         case 2:
-            somaDiagonalPrincipal(mat);
+            somaDiagonalPrincipal(matriz);
             break;
         case 3:
-            somaDiagonalSecundaria(mat);
+            somaDiagonalSecundaria(matriz);
             break;
         default:
             printf("Entrada invalida");
